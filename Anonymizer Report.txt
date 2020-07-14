@@ -1,0 +1,9 @@
+its anonymizer report:
+
+Things that might not be getting anonymized properly:
+line 19: ZoneNameShort, UsesDST
+line 126: chronologicalAge, avaModelAge, vcvModelAge
+line 28206: logfile
+line 28211: timelocal, timegmt
+line 28339: timelocal, timegmt
+line 28393: Group id, name(study name)

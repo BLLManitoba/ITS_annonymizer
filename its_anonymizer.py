@@ -38,10 +38,15 @@ def parse_file(inFile, outFile, replacements):
                 outF.write(line)
 
 
-if __name__ == '__main__':
-    itsFolder = sys.argv[1]
-
-    # Check that the ist files directory exists
+#if __name__ == '__main__':
+def main(inDir, outDir, repFile):
+    #print(sys.argv[1])
+    #itsFolder = sys.argv[1]
+    # itsFolder = "S:\Soderstrom-Lab\GitHubFiles\ITS_annonymizer\input_its_files"
+    # print(itsFolder)
+    itsFolder = inDir
+    
+    # Check that the its files directory exists
     if not os.path.isdir(itsFolder):
         raise Exception('Not a valid folder name')
 
@@ -51,14 +56,18 @@ if __name__ == '__main__':
         raise Exception('There are no its files in the folder')
 
     # Make the output folder
-    outFolder = itsFolder + '_anonymised'
-    if os.path.isdir(outFolder):
-        raise Exception('The output folder already exists, please consider delete/renaming it.')
-    else:
-        os.mkdir(outFolder)
-
+    #outFolder = itsFolder + '_anonymised'
+    #if os.path.isdir(outFolder):
+    #    raise Exception('The output folder already exists, please consider delete/renaming it.')
+    #else:
+    #    os.mkdir(outFolder)
+    outFolder = outDir
+    if not os.path.isdir(outFolder):
+        raise Exception('Not a valid folder name')
+    
     # Load the replacements dictionary
-    replacements = load_replacements_file('./replacements_dict.json')
+    #replacements = load_replacements_file('./partial_replacements_dict.json')
+    replacements = load_replacements_file(repFile)
 
     # Process all files
     for inFile in files:

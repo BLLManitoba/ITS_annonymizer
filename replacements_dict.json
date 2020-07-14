@@ -1,38 +1,29 @@
 {
     "PrimaryChild": {
-        "DOB": "1000-01-01",
-        "Gender": "A",
-        "ChildKey": "9A99AAA999999A99"
+        "DOB": "1000-01-01"
     },
 	"ITS":{
 		"fileName":"new_filename_1001",
 		"timeCreated":[{"replace_value":"1000-01-01"},{"only_time":"true"}]
 	},
     "TransferTime": {
-        "TimeZone": "AAA",
-        "UTCTime": "1000-01-01T00:00:00",
-        "LocalTime": "1000-01-01T00:00:00"
+        "UTCTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}],
+        "LocalTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
     },
     "ChildInfo": {
-        "dob": "1000-01-01",
-        "gender": "A"
-    },
-    "SRDInfo": {
-        "SerialNumber": "9999"
+        "dob": "1000-01-01"
     },
     "Child": {
         "DOB": "1000-01-01",
-        "Gender": "A",
         "EnrollDate": "1000-01-01",
-        "id": "A999",
-        "ChildKey": "9A99AAA999999A99"
+        "id": "A999"
     },
     "Bar": {
-        "startClockTime": "1000-01-01T00:00:00"
+        "startClockTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
     },
     "BarSummary": {
-        "leftBoundaryClockTime": "1000-01-01T00:00:00",
-        "rightBoundaryClockTime": "1000-01-01T00:00:00"
+        "leftBoundaryClockTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}],
+        "rightBoundaryClockTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
     },
     "Recording": {
         "startClockTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}],
@@ -43,6 +34,13 @@
         "endClockTime": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
     },
     "Item": {
-        "timeStamp": "1000-01-01T00:00:00"
-    }
+        "timeStamp": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
+    },
+	"ProcessingJob": {
+	    "logfile": "exec10001010T100010Z_job00000001-10001010_101010_100100.upl.log"
+	},
+	"ResourceSnapshot":{
+	    "timelocal": [{"replace_value":"1000-01-01"},{"only_time":"true"}],
+		"timegmt": [{"replace_value":"1000-01-01"},{"only_time":"true"}]
+	}
 }
