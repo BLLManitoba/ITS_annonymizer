@@ -30,6 +30,8 @@ its_anon_gui2.py relies on the following modules, which must also be installed o
 5. OR Partially anonymize files:
 	1. Click the desired checkbuttons to leave the desired data in the ITS file's original format.
 	2. Click "Partially anonymize files"(anonymizes only data specified)
+
+This program also generates a short Changes Log text file that summarizes the original files, the anonymized files, and what data were anonymized. This file is saved in the same folder as the output folder the user selected in step 3 above.
 	
 ### Checkbuttons
 
@@ -99,4 +101,4 @@ There are some items that we decided to keep un-anonymous:
 
 ## Contact
 
-If you have questions about how to use the anonymizer, bug fixes, or improvements, please contact Sarah at smacewan@mts.net
+If you have questions about how to use the anonymizer, bug fixes, or improvements, please contact Sarah at Sarah.Macewan@umanitoba.ca
