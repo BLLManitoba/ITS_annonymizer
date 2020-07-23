@@ -2,9 +2,6 @@
 # Created by: Sarah MacEwan
 # Last Updated: August 21, 2019
 
-# TODO:
-    # Description of rationale behind each data point being anonymized, and behind what data is being left in (in the README).
-
 import sys
 import os
 
@@ -44,6 +41,7 @@ class Anonymizer(object):
         self.repFileFullName = 'replacements_dict.json'
         #self.repFileFull = open(self.repFileFullName)
         #self.repDict = json.load(self.repFileFull)
+        self.anon_files_list = []
         
         self.checkbuttonVals = []
         self.primaryChildVar= tk.IntVar()
@@ -81,7 +79,7 @@ class Anonymizer(object):
             width = 20,
             relief = tk.GROOVE).grid(row = 1, column = 1, padx=20, pady=5, sticky='W')
 
-        tk.Label(self.frame, text = "Partial anonymization: Select which information you want anonymized",
+        tk.Label(self.frame, text = "Partial anonymization: Select which information you want anonymized. \n Note: Selecting 'Fully anonymize files' will de-activate these checkbuttons.",
             font = ("Times New Roman", 15)).grid(row=0, column=0, padx=5, pady=5, sticky='NW')
         
         self.primary_child_checkbox = tk.Checkbutton(
@@ -119,7 +117,7 @@ class Anonymizer(object):
             command = self.anonymize_its_files_full,
             height = 1,
             width = 20,
-            relief = tk.GROOVE).grid(row = 2, column = 1, padx=5, pady=5)
+            relief = tk.GROOVE).grid(row = 3, column = 1, padx=5, pady=5)
         
         # Selective anonymizer button
         self.anon_button = tk.Button(
@@ -139,7 +137,7 @@ class Anonymizer(object):
         #self.checkbuttonVals.append([['SRDInfo'], self.SRDIVar.get()])
         #self.checkbuttonVals.append([['Child'], self.childVar.get()])
         self.checkbuttonVals.append([['ITS', 'TransferTime', 'Bar', 'BarSummary', 'Recording', 'FiveMinuteSection', 'Item'], self.timesVar.get()])
-        print self.checkbuttonVals
+        #print self.checkbuttonVals
         return self.checkbuttonVals
     
     def select_input_its(self):
@@ -149,6 +147,8 @@ class Anonymizer(object):
     def select_output_dir(self):
         print('selecting output dir...')
         self.output_dir = tkFileDialog.askdirectory(title='Select where to save your output files')
+        if str(self.output_dir) == str(self.input_dir):
+            showwarning('Output and Input folders are identical', 'Please select an ouput folder that is different from the folder.')
         
     def anonymize_its_files_full(self):
         print('input is', self.input_dir)
@@ -160,13 +160,19 @@ class Anonymizer(object):
             showwarning('Output folder', 'Please select an output folder')
             return
         print("Fully anonymizing your its files...")
-        its_anonymizer.main(self.input_dir, self.output_dir, self.repFileFullName)
+        self.anon_files_list = its_anonymizer.main(self.input_dir, self.output_dir, self.repFileFullName)
+        change_log_name = os.path.join(self.output_dir, 'Changes_Log.txt')
+        changes_log = open(change_log_name, "w")
+        changes_log.write("The following files were fully anonymized. \nThe first file in each row is the origianl file, and the second file is the anonymized file.")
+        for row in self.anon_files_list:
+            changes_log.write('\n'+str(row))
+        changes_log.close()
         
     def create_partial_file(self):
         print('making a partial replacements dictionary, based on what was selected...')
         with open(self.repFileFullName) as repFileFull:
             self.repDict = json.load(repFileFull)
-            print('initial repDict: ', self.repDict)
+            #print('initial repDict: ', self.repDict)
             for node in self.repDict.keys():
             #print node
                 for item in self.get_selection_values():
@@ -186,8 +192,8 @@ class Anonymizer(object):
                  #       del self.repDict[node]
             with open('partial_replacements_dict.json', 'w') as repf:
                 json.dump(self.repDict, repf)
-                print repf
-        print "outside with block: repf: ", repf, " repFileFull: ", repFileFull
+                #print repf
+        #print "outside with block: repf: ", repf, " repFileFull: ", repFileFull
         
     def anonymize_its_files(self):
         print('input is', self.input_dir)
@@ -208,7 +214,17 @@ class Anonymizer(object):
             return
         print("anonymizing desired sections of its files...")
         self.create_partial_file()
-        its_anonymizer.main(self.input_dir, self.output_dir, 'partial_replacements_dict.json')
+        self.anon_files_list = its_anonymizer.main(self.input_dir, self.output_dir, 'partial_replacements_dict.json')
+        change_log_name = os.path.join(self.output_dir, 'Changes_Log.txt')
+        changes_log = open(change_log_name, "w")
+        changes_log.write("The following files were partially anonymized. \nThe first file in each row is the origianl file, and the second file is the anonymized file.\nFiles were anonymized for these select items: ")
+        if chiSelVal[1] == 1:
+            changes_log.write(str(chiSelVal[0]))
+        if timeSelVal[1] == 1:
+            changes_log.write(str(timeSelVal[0]))
+        for row in self.anon_files_list:
+            changes_log.write('\n'+str(row))
+        changes_log.close()
         
         os.remove('partial_replacements_dict.json')
 

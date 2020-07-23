@@ -70,11 +70,15 @@ def main(inDir, outDir, repFile):
     replacements = load_replacements_file(repFile)
 
     # Process all files
+    processed_files = []
     for inFile in files:
         _, name = os.path.split(inFile)
         outFile = os.path.join(outFolder, name)
 
         parse_file(inFile, outFile, replacements)
+        processed_files.append([inFile, outFile])
         print('done {}'.format(name))
-
+        
     print('\n-----\nProcessed {} files'.format(len(files)))
+    
+    return processed_files

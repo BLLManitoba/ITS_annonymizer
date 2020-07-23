@@ -1,0 +1,11 @@
+The following files were fully anonymized. 
+The first file in each row is the origianl file, and the second file is the anonymized file.
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C167_20150708.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C167_20150708.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C168_20151030.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C168_20151030.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C169_20170310.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C169_20170310.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C170_20160419.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C170_20160419.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C173_20151123.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C173_20151123.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C174_20151123.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C174_20151123.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C175_20160301.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C175_20160301.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C180_20161122.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C180_20161122.its']
+[u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/input_its_files\\C184_20161213.its', u'S:/Soderstrom-Lab/GitHubFiles/ITS_annonymizer/anonymized_its_files\\C184_20161213.its']
