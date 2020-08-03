@@ -57,7 +57,7 @@ class Anonymizer(object):
         self.submenu = tk.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label='Menu', menu=self.submenu)
         #self.submenu.add_command(label = 'run standard anonymization...', command=self.anonymize_its_files_full)
-        readme_link = 'https://github.com/BLLManitoba/ITS_anonymizer/blob/master/README.md'
+        readme_link = 'https://github.com/BLLManitoba/ITS_annonymizer/blob/master/README.md'
         self.submenu.add_command(label='Help', command=lambda: webbrowser.open_new(readme_link)) # .get(chrome_path).open_new(readme_link))
 
         # Input/Output Selection Buttons
