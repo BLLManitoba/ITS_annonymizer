@@ -140,6 +140,11 @@ class Anonymizer(object):
         #print self.checkbuttonVals
         return self.checkbuttonVals
     
+    def check_dirs(self):
+        if str(self.output_dir) == str(self.input_dir):
+            showwarning('Output and Input folders are identical', 'Please select an ouput folder that is different from the folder.')
+            return True
+
     def select_input_its(self):
         print('selecting inputs...')
         self.input_dir = tkFileDialog.askdirectory()
@@ -147,9 +152,8 @@ class Anonymizer(object):
     def select_output_dir(self):
         print('selecting output dir...')
         self.output_dir = tkFileDialog.askdirectory(title='Select where to save your output files')
-        if str(self.output_dir) == str(self.input_dir):
-            showwarning('Output and Input folders are identical', 'Please select an ouput folder that is different from the folder.')
         
+    # The handler method for "Fully anonymize files" button
     def anonymize_its_files_full(self):
         print('input is', self.input_dir)
         print('output is', self.output_dir)
@@ -159,6 +163,11 @@ class Anonymizer(object):
         if self.output_dir == None:
             showwarning('Output folder', 'Please select an output folder')
             return
+
+        # Quick and ugly to ensure that same input/output directories are not selected.
+        if self.check_dirs():
+            return
+
         print("Fully anonymizing your its files...")
         self.anon_files_list = its_anonymizer.main(self.input_dir, self.output_dir, self.repFileFullName)
         change_log_name = os.path.join(self.output_dir, 'Changes_Log.txt')
@@ -199,6 +208,11 @@ class Anonymizer(object):
         print('input is', self.input_dir)
         print('output is', self.output_dir)
         #print('age checkbox vals are: ', self.get_selection_values())
+
+        # Quick and ugly to ensure that same input/output directories are not selected.
+        if self.check_dirs():
+            return
+
         checkVals = self.get_selection_values()
         chiSelVal = checkVals[0]
         timeSelVal = checkVals[1]
