@@ -101,4 +101,4 @@ There are some items that we decided to keep un-anonymous:
 
 ## Contact
 
-If you have questions about how to use the anonymizer, bug fixes, or improvements, please contact Sarah at Sarah.Macewan@umanitoba.ca
+If you have questions about how to use the anonymizer, bug fixes, or improvements, please contact M_Soderstrom@umanitoba.ca
